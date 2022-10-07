@@ -9,3 +9,9 @@ built in the 11th or 12th century by the Almoravid dynasty as a fortress, but ha
 ## kood
 `hello world()`
 
+## koodi blokk
+```
+rida 1
+rida 2
+rida 3
+```
