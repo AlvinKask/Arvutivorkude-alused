@@ -11,6 +11,8 @@ rida 2
 rida 3
 ```
 
+https://www.markdownguide.org/basic-syntax
+
 Teha 1-5 teemade jaotus, oma jutt, mõtted ja kommentaarid
 
 
