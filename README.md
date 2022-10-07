@@ -15,3 +15,5 @@ rida 1
 rida 2
 rida 3
 ```
+
+Teha 1-5 teemade jaotus, oma jutt, mõtted ja kommentaarid
