@@ -16,43 +16,34 @@
 - Tegu HTTP (port 80) päisega leheküljelt Wikipedia.org.  
 - SSH server (port 22).  
 - printf (formatted string) kasutatakse, et mitu käsklust kokku panna. Printf on targem ning suudab kasutada endas teisi käsklusi (\r, \n) .  
-- nc (netcat) loeb ja kirjutab võrguühenduste kohta. Ühendub pordiga ja saadab sinna käskluse.  
+- nc (netcat) loeb ja kirjutab võrguühenduste kohta. Ühendub pordiga ja saadab sinna käskluse. **netcat tegeleb ühe käsklusega korraga.**  
+  - man nc - kuvab nc manuali, kust saab käsklused, mida kasutada.  
+
 - | (pipe) eraldab väljundi sisendist.  
   - Seega, meil 2 programmi: printf ja |. printf on HTTP päring, mille tulemust kasutatakse nc sisendina. Nc saadab selle lehele ja seejärel kuvab tulemuse.  
 
 **Kõik võrgukihid sõltuvad alumistest pakkudes tuge ülemistele (Vaata allolevat pilti).**  
-![Kihid](/assets/images/Kihid.JPG)
+![Kihid](https://user-images.githubusercontent.com/115221752/196022094-709f5e60-f4cd-49b0-b392-82833ccc6c8c.JPG)
 
-*
-man nc - kuvab nc manuali, kust saab käsklused, mida kasutada.
-- pordi kuulamiseks on käsk: nc -l 3456
 
-*
-Kasutades port 3456 suhtlemiseks:
-- Tuleb avada 2 klienti: nc -l 3456 & nc localhost 3456.
-- Mõlemad saavad kirjutada, lugeda ja lõpetada vestlust (ctrl D).
 
-*
-Pordinumbrid eristavad erinevaid rakendusi ja sessioone samade host'ide juures.
-Kõrgeim port, mida nc saab kuulata: 65535
-Madalaim port, mida nc saab kuulata: 1024
+**Kasutades port 3456 suhtlemiseks:**  
+- Tuleb avada 2 klienti: nc -l 3456 & nc localhost 3456.  
+    - Pordi kuulamiseks on käsk: nc -l 3456 
+- Mõlemad saavad kirjutada, lugeda ja lõpetada vestlust (ctrl D).  
 
-*
-Pordid 1023 on reserveeritud root kasutajale.
-- Sama pordi kuulamine annab veateate, et port kasutuses.
+**Pordinumbrid eristavad erinevaid rakendusi ja sessioone samade host'ide juures.**  
+- Kõrgeim port, mida nc saab kuulata: 65535  
+- Madalaim port, mida nc saab kuulata: 1024  
 
-*
-sudo lsof -i
-Käsklus annab edasi kuulatavad või juba ühendatud võrguühendusi.
+**Pordid 1023 on reserveeritud root kasutajale.**  
+- Sama pordi kuulamine annab veateate, et port kasutuses.  
 
-*
-printf 'HTTP/1.1 302 Moved\r\nLocation: https://www.eff.org/' | nc -l 2345
-- Kuna me netcat'iga kuulame port 2345, siis veebilehitsejat kasutades on meil võimalik minna samale pordile ning seejärel näeme me vastavat lehekülge.
-- Põhimõtteliselt ühendame pordi veebilehe külge ning seda ühendust on võimalik veebilehitsejaga "kuulata" meie IP aadressi ja 2345 porti (192.168.1001:2345)
+**sudo lsof -i käsklus annab edasi kuulatavad või juba ühendatud võrguühendusi.**  
 
-*
-netcat tegeleb ühe käsklusega korraga.
-### Tulemus
+**printf 'HTTP/1.1 302 Moved\r\nLocation: https://www.eff.org/' | nc -l 2345**  
+- Kuna me netcat'iga kuulame port 2345, siis veebilehitsejat kasutades on meil võimalik minna samale pordile ning seejärel näeme me vastavat lehekülge.  
+- Põhimõtteliselt ühendame pordi veebilehe külge ning seda ühendust on võimalik veebilehitsejaga "kuulata" meie IP aadressi ja 2345 porti (192.168.1001:2345).  
 #
 #
 # Teema 2
