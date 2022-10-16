@@ -1,7 +1,7 @@
 # Networking for Web Developers
 #
 # FROM PING TO HTTP  
-**ping -c3 8.8.8.8 käsklus saadab vastavale netilehele 3 testsõnumit, lõpetab ning kuvab vastused.**  
+**ping -c3 8.8.8.8 - käsklus saadab vastavale netilehele 3 testsõnumit, lõpetab ning kuvab vastused.**  
 - Meil on olemas internet.  
 -  8.8.8.8 on "üleval" ja töötab ning meie suudame "rääkida" temaga.  
 -  Meie ISP (internet service provider) suudab suhelda Google võrguga.  
@@ -25,8 +25,6 @@
 **Kõik võrgukihid sõltuvad alumistest pakkudes tuge ülemistele (Vaata allolevat pilti).**  
 ![Kihid](https://user-images.githubusercontent.com/115221752/196022094-709f5e60-f4cd-49b0-b392-82833ccc6c8c.JPG)
 
-
-
 **Kasutades port 3456 suhtlemiseks:**  
 - Tuleb avada 2 klienti: nc -l 3456 & nc localhost 3456.  
     - Pordi kuulamiseks on käsk: nc -l 3456 
@@ -39,31 +37,60 @@
 **Pordid 1023 on reserveeritud root kasutajale.**  
 - Sama pordi kuulamine annab veateate, et port kasutuses.  
 
-**sudo lsof -i käsklus annab edasi kuulatavad või juba ühendatud võrguühendusi.**  
+**sudo lsof -i - käsklus annab edasi kuulatavad või juba ühendatud võrguühendusi.**  
 
 **printf 'HTTP/1.1 302 Moved\r\nLocation: https://www.eff.org/' | nc -l 2345**  
 - Kuna me netcat'iga kuulame port 2345, siis veebilehitsejat kasutades on meil võimalik minna samale pordile ning seejärel näeme me vastavat lehekülge.  
 - Põhimõtteliselt ühendame pordi veebilehe külge ning seda ühendust on võimalik veebilehitsejaga "kuulata" meie IP aadressi ja 2345 porti (192.168.1001:2345).  
 #
 #
-# Teema 2
-The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
-### Tulemus
+# NAMES AND ADDRESSES
+**Packet, sisaldab nii saatva, kui ka sihtkoha masina IP'd.**  
+**Host, masin internetis, mis pakub teenust.**  
+**Endpoint, 2 masinat või programmi, mis suhtlevad omavahel üle võrgu.**  
+
+**ping yahoo.com**  
+- Käsklus ping peab otsima host'i IP aadressi enne, kui saab saata ping sõnumit.  
+- Töötab, kuni vajutatakse Ctrl+C.  
+- Lisades ping käsklusele -c 7 saadetakse yahhoo.com lehele 7 ping sõnumit (ping -c 7 yahoo.com)  
+
+**DNS - Domain Name System**  
+- Hostname "tõlgitakse" IP-aadressiks (www.example.net -> 93.184.216.34  
+  - DNS A-record hoiab endas aadressi infot ja kliendiprogramm (veebibrauser) otsivad sealt aadressi.  
+
+**DNS kliendi kood "resolver"**  
+- On sisseehitatud kõigisse operatsioonisüsteemidesse ning nc ja ping saavad seda kasutada.  
+
+**host - käsklus, mis otsib andmed meie DNS kohta**  
+- host -t a - otsib aadressi.  
+  - man host - kuvab host manuali, kust saab käsklused, mida kasutada.  
+    - dig - käsklus, mis otsib scriptilaadseid andmed DNS kohta  
+
+**CNAME - canonical name ehk alias**  
+**AAAA ("quad-A") - IPv6 aadress**  
+**NS - DNS name server**  
+
+**Klient küsib example.com aadressi**
+![Nimeotsing](https://user-images.githubusercontent.com/115221752/196024194-001593ca-e5ae-4089-aec1-91f38e393136.JPG)
+
+**IPv4 - 4 numbrit mida eraldavad punktid** 
+**IPv6 - 8 numbri ja tähekombinatsiooni mida eraldavad koolonid** 
+
+**IPv4 erinevates numeratsioonides**
+![IPv4](https://user-images.githubusercontent.com/115221752/196024749-1c8b5315-50ed-402e-ac2d-d226bf0f3e32.JPG)
+
 #
 #
-# Teema 3
+# ADDRESSING AND NETWORKS
 The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
-### Tulemus
 #
 #
 # Teema 4
 The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
-### Tulemus
 #
 #
 # Teema 5
 The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
-### Tulemus
 #
 #
 
