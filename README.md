@@ -116,6 +116,23 @@ Ja kogu oranž alumine rida (alates 240-st) eraldati algselt "edaspidiseks kasut
 - lo = loopback interface (suhtleb arvuti erinevate programmidega)
 - tunnel interface
 - virtual machine interface
+
+**Ruuter ühendab erinevad IP-võrgud ning host'id teavad default gateway'd**  
+![Gate1](https://user-images.githubusercontent.com/115221752/196423817-d21e247f-6088-4e58-8fa0-d18ea1d1bbea.JPG)
+![Gate2](https://user-images.githubusercontent.com/115221752/196423854-187c21eb-c369-45dd-9970-b08a21e5c32a.JPG)
+
+**ip route show default (Linux) & netstat -nr (Linux, Mac, Unix)**  
+- näitab default gateway IPv4 aadressi
+
+**Kodune võrk suhtleb välismaailmaga läbi ruuteri avaliku IPv4 aadressi**  
+![Gate1](https://user-images.githubusercontent.com/115221752/196427425-eec72ae4-ca16-41b4-97b1-fe3569098b76.JPG)
+
+**Kodune võrk jaguneb nii** 
+
+![Võrk2](https://user-images.githubusercontent.com/115221752/196427566-d6674d51-6156-4731-ba21-feff6ef4ecc7.JPG)
+
+
+
 #
 #
 # Teema 4
