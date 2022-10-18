@@ -110,6 +110,12 @@ Ja kogu oranž alumine rida (alates 240-st) eraldati algselt "edaspidiseks kasut
 **171.64.0.0/14 Stanford University subnet IPv4 näide**  
 ![Stanford Uni](https://user-images.githubusercontent.com/115221752/196352271-775ee9cb-29f2-40ae-9c5c-2a480b7af006.JPG)
 
+**Ühel arvutil võib olla mitu liidest, mis kõik omavad aadressi (ip addr show):**  
+- eth0 = kaabliga internet  
+- wlan0 = wifi  
+- lo = loopback interface (suhtleb arvuti erinevate programmidega)
+- tunnel interface
+- virtual machine interface
 #
 #
 # Teema 4
