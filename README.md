@@ -131,7 +131,11 @@ Ja kogu oranž alumine rida (alates 240-st) eraldati algselt "edaspidiseks kasut
 
 ![Võrk2](https://user-images.githubusercontent.com/115221752/196427566-d6674d51-6156-4731-ba21-feff6ef4ecc7.JPG)
 
-
+**Privaatseid IPv4 aadresse kasutatakse koos NAT (network aadress translation) süsteemiga** 
+- Ükskõik millal käib liiklus privaatse ja avaliku võrgu vahel, peab ruuter kirjutama või tõlkima ümber sellel olevad aadressid.  
+- Ruuteri sees on "kaart", mis teab milline sisemine aadress (koos pordiga) on seotud millise avaliku aadressiga (koos pordiga).  
+	- Kuna IPv4 aadresse on vähem, kui inimesi Maal ning iga inimene kasutab mitut seadet, siis NAT aitab "petta" süsteemi ning loob workaround'i IP vähesuse probleemile.  
+![Võrk3](https://user-images.githubusercontent.com/115221752/196429163-3b3c78e9-3910-48e6-8c0b-01a65238fb34.JPG)
 
 #
 #
