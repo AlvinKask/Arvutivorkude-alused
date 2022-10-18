@@ -120,7 +120,79 @@ The Alcázar of Segovia is a medieval castle located in the city of Segovia in C
 The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
 #
 #
+#
+# ÕPPEJÕU MÄRKMED (Toivo Pärnpuu)
+10.1.2.3
 
+0.0.0.0
+255.255.255.255 
+
+0 - välja lülitatud / false  
+1 - sisse lülitatud / true  
+
+2^3  
+2*2*2  
+				  040.E3C.C31.D3B  
+MAC				  04:0E:3C:C3:1D:3B  
+Physical Address: 04-0E-3C-C3-1D-3B  
+
+IPv4 Address:     192.168.000.113  
+Subnet Mask :     255.255.255.000  
+Default Gateway:  192.168.000.001 < väljapääs teistesse võrkudesse ja internetti.  
+DNS Servers . . : 192.168.000.001 < osutab meile IP ja nimede teisendamise teenust  
+
+DNS resolver  
+- hosts?  
+- võtis esimese DNS serveri ja saatis talle küsimuse, mis on err.ee aadress?  
+
+DHCP Server
+annab võrgukonfi 
+
+unicast
+broadcast
+multicast
+
+printf 'HTTP/1.1 302 Moved\r\nLocation: https://www.eff.org/' | nc -l 2345
+
+IPv4 88.196.5.163  
+IPv6 2001:db8:3333:4444:5555:6666:7777:8888  
+
+192.168.000.113  
+0000 0000. 0000 0000. 0000 0000 . 0000 0000  
+1111 1111. 1111 1111. 1111 1111 . 1111 1111  
+2^32 = 4 294 967 296  
+7 979 443 621  
+4 294 967 296  
+- iga arvuti / seade aadress peab olema unikaalne?  
+mure 1995?  
+
+IPv6 - töörühm
+NAT 
+
+avalikud IP-d (public IP)
+privaatvõrgu IP-d (private IP)
+
+
+TTL - Time To Live
+
+toivo.parnpuu@tptlive.ee 
+
+kasutajnimi@server 
+kasutajanimi@ipaadress
+
+Kõik maailma domeeninime tipud:
+https://www.iana.org/domains/root/db
+
+DNS-ist
+https://tparnpuu.webhosting.tptlive.ee/h5p/wp-admin/admin-ajax.php?action=h5p_embed&id=1
+
+Wireshark
+https://www.wireshark.org/
+
+TCPDUMP
+#
+#
+#
 - siin on jutt
   -  siin ka
 
