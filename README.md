@@ -82,7 +82,34 @@
 #
 #
 # ADDRESSING AND NETWORKS
-The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
+**1/8 IPv4 aadressidest on kõrvale pandud testimiseks, dokumentatsiooniks jne.**  
+- IPv4 aadress on punktidega eraldatud numbrite jada (et oleks lihtsam jälgida).  
+	- Arvuti näeb seda 32-bit'ise numbrite jadana.  
+
+**IPv4 address map - EI OLE ÕIGE PILT AGA ANNAB IDEE EDASI**  
+![address map](https://user-images.githubusercontent.com/115221752/196353026-a9f941ce-77aa-401b-b441-794a3d1ccd8f.JPG)
+
+Helerohelised ruudud (0, 10 ja 127) on plokid, mis on täielikult reserveeritud.  
+Tumerohelised ruudud on osaliselt reserveeritud plokid. Näiteks ei ole 192 plokist kõik reserveeritud, kuid osa on reserveeritud.  
+Kogu tsüaanrida (alates 224-st) on IP multisaadete jaoks ette nähtud.  
+Ja kogu oranž alumine rida (alates 240-st) eraldati algselt "edaspidiseks kasutamiseks", kuid kaotati käibelt, kuna see blokeeriti kehtetuks. Vale planeerimise tõttu kaotasime 1/16 kõigist IPv4 aadressidest.  
+
+**IPv4 aadresse on maksimaalselt 4294967296 (32bit) - seda on peaaegu 2x vähem, kui planeedil elanikke.**  
+
+**Kaldkriipsuga saab määratleda ära, kui palju kohti on IPv4 aadressil jäetud host'i jaoks**  
+![22 host](https://user-images.githubusercontent.com/115221752/196352222-311e3e99-2050-41e8-b3d6-4f47aa7b3756.JPG)
+
+- /22 võrgu puhul on 10bit'i jäetud host'ile ehk siis 2 astmel 10 = 1024 aadressi.  
+	- Kasutatav on 1021 (esimene ja viimane on reserveeritud ja sellest esimene on harilikult ruuterile).  
+- /24 võrgu puhul on 8bit'i jäetud host'ile ehk siis 2 astmel 8 = 256 aadressi.  
+	- Kasutatav on 253 (esimene ja viimane on reserveeritud ja sellest esimene on harilikult ruuterile). 
+
+**/24 võrgu subnet mask on 255.255.255.0**  
+![24 subnet mask](https://user-images.githubusercontent.com/115221752/196352249-2b2116a6-3476-497e-bcfe-7a001bef9fa4.JPG)
+
+**171.64.0.0/14 Stanford University subnet IPv4 näide**  
+![Stanford Uni](https://user-images.githubusercontent.com/115221752/196352271-775ee9cb-29f2-40ae-9c5c-2a480b7af006.JPG)
+
 #
 #
 # Teema 4
