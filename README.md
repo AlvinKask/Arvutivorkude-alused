@@ -137,6 +137,19 @@ Ja kogu oranž alumine rida (alates 240-st) eraldati algselt "edaspidiseks kasut
 	- Kuna IPv4 aadresse on vähem, kui inimesi Maal ning iga inimene kasutab mitut seadet, siis NAT aitab "petta" süsteemi ning loob workaround'i IP vähesuse probleemile.  
 ![Võrk3](https://user-images.githubusercontent.com/115221752/196429163-3b3c78e9-3910-48e6-8c0b-01a65238fb34.JPG)
 
+**Privaataadresse saab kasutada ainult koduses võrgus**  
+- Maailma mõistes pole nad unikaalsed  
+- Kõik nad peituvad NAT taha  
+
+**IPv6 vs IPv4**  
+- 128bit vs 32bit  
+- 16 okdeti (8 kohalist 1- ja 0 jada) vs 4 okdeti  
+- 2^128 aadressi vs 2^32 aadressi  
+- Kõige väiksem osa, mida lõppkasutajale anda on /64 vs 32 terve IPv4 peale kokku  
+- hex vs kümnendsüsteem  
+![vs](https://user-images.githubusercontent.com/115221752/196766977-a0065cb8-6f35-4e4a-b568-8c580744fa1a.jpg)
+
+**http://test-ipv6.com/**
 #
 #
 # Teema 4
@@ -220,6 +233,14 @@ TCPDUMP
 #
 #
 #
+# MUUD MÄRKMED
+- https://github.com/Tallinna-Polutehnikum/KTA-22E-networks
+- https://www.markdownguide.org/basic-syntax
+- https://www.udacity.com/course/networking-for-web-developers--ud256
+- https://cloud.google.com/shell
+- https://webhosting.tptlive.ee/
+- https://education.github.com/pack
+
 - siin on jutt
   -  siin ka
 
