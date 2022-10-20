@@ -168,8 +168,8 @@ Kursuse keskkonnas kasutatavate Linuxi käskude jaoks soovitan kasutada: https:/
 Cloud Shelli saab kasutada 50 tundi nädalas.  
 
 # Enne kasutamist käivita käsud:  
-sudo apt-get update  
-sudo apt-get install netcat-openbsd tcpdump traceroute mtr iputils-ping lsof  
+`sudo apt-get update`  
+`sudo apt-get install netcat-openbsd tcpdump traceroute mtr iputils-ping lsof`  
 
 
 10.1.2.3
