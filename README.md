@@ -162,6 +162,12 @@ The Alcázar of Segovia is a medieval castle located in the city of Segovia in C
 #
 #
 # ÕPPEJÕU MÄRKMED (Toivo Pärnpuu)
+
+#Enne kasutamist käivita käsud:  
+sudo apt-get update  
+sudo apt-get install netcat-openbsd tcpdump traceroute mtr iputils-ping lsof  
+
+
 10.1.2.3
 
 0.0.0.0
