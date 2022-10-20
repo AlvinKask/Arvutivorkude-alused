@@ -171,7 +171,6 @@ Cloud Shelli saab kasutada 50 tundi nädalas.
 `sudo apt-get update`  
 `sudo apt-get install netcat-openbsd tcpdump traceroute mtr iputils-ping lsof`  
 
-
 10.1.2.3
 
 0.0.0.0
