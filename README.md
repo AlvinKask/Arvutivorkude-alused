@@ -163,6 +163,10 @@ The Alcázar of Segovia is a medieval castle located in the city of Segovia in C
 #
 # ÕPPEJÕU MÄRKMED (Toivo Pärnpuu)
 
+#Google Cloud shell  
+Kursuse keskkonnas kasutatavate Linuxi käskude jaoks soovitan kasutada: https://cloud.google.com/shell  
+Cloud Shelli saab kasutada 50 tundi nädalas.  
+
 #Enne kasutamist käivita käsud:  
 sudo apt-get update  
 sudo apt-get install netcat-openbsd tcpdump traceroute mtr iputils-ping lsof  
