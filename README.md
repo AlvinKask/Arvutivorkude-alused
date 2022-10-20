@@ -168,8 +168,20 @@ Kursuse keskkonnas kasutatavate Linuxi käskude jaoks soovitan kasutada: https:/
 Cloud Shelli saab kasutada 50 tundi nädalas.  
 
 # Enne kasutamist käivita käsud:  
-`sudo apt-get update`  
+`sudo apt-get update`- uuendab paketinimekirjad.  
+`sudo apt-get upgrade`- pilves pole vaja uuendada, sest vajab keerulisi/arusaamatuid korrraldusi.  
 `sudo apt-get install netcat-openbsd tcpdump traceroute mtr iputils-ping lsof`  
+`sudo apt-get update && sudo apt-get install netcat-openbsd tcpdump traceroute mtr iputils-ping lsof -y` - 1. ja 3. kokku
+
+control + z - pausile  
+fg - toob tagasi esiplaanile  
+bg - viib taustale  
+kill %%  
+control + c - katkestab  
+
+ssh võtmed ja nende kasutamine  
+- Webhosting  
+- Github  
 
 10.1.2.3
 
