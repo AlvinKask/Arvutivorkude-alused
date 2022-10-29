@@ -89,17 +89,12 @@ Esiteks peame hoidla oma kohalikku masinasse kloonima. Võime minna GitHub'i rep
 Seejärel kloonige hoidla terminali abil:
 ```
 git clone https://github.com/AlvinKask/SSH-key-kontroll.git
-
 ```
 Hoidla laetakse kasutaja desktopile.
 
 Ja lükake need GitHub'i:
 ```
-git clone https://github.com/AlvinKask/SSH-key-kontroll.git
-
-```
 git push
-
 ```
 #
 #
