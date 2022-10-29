@@ -1,5 +1,109 @@
-# Networking for Web Developers
+# SSH võtmed (SSH Keys)
+Lihtsamalt öeldes on SSH-võtmed SSH-protokolli (Secure Shell) jaoks kasutatavad "volikirjad", mis võimaldavad turvalist juurdepääsu kaugarvutitele interneti kaudu. Tavaliselt toimub see autentimine käsureakeskkonnas. See protokoll põhineb klient-server arhitektuuril, mis tähendab, et kasutaja (või "klient") peab kaugserverisse sisselogimiseks ja käskude täitmiseks kasutama spetsiaalset tarkvara, mida nimetatakse SSH-kliendiks.
+
+### Avalikud vs privaatvõtmed
+SSH-protokoll kasutab krüptograafia tehnikat, mida nimetatakse asümmeetriliseks krüptimiseks **(asymmetric encryption)**. Põhimõtteliselt on asümmeetriline krüptimine süsteem, mis kasutab võtmete paari: avalik ja privaatne **(public and private keys)**.
+
+Avalikku võtit saab jagada kõigiga. Selle põhieesmärk on andmete krüpteerimine, teisendades sõnumi salakoodiks või šifrtekstiks. See võti saadetakse tavaliselt teistele süsteemidele, näiteks serveritele, et krüpteerida andmed enne interneti kaudu saatmist.
+
+Teisest küljest on privaatvõti see, mille peate endale hoidma. Seda kasutatakse krüptitud andmete dekrüpteerimiseks teie avaliku võtmega. Ilma selleta on krüptitud teavet võimatu dekodeerida.
+
+See meetod võimaldab teil ja serveril hoida teabe edastamiseks turvalist sidekanalit.
+
+### SSH kaudu serveriga ühenduse loomisel toimub taustal järgmine:
+- Klient saadab avaliku võtme serverisse.
+- Server palub kliendil allkirjastada juhuslik sõnum, mis on krüpteeritud avaliku võtmega, kasutades privaatvõtit.
+- Klient allkirjastab sõnumi ja edastab tulemuse serverisse.
+- Kliendi ja serveri vahel luuakse turvaline ühendus.
+
+**Oluline on hoida oma privaatvõtmeid turvaliselt ja mitte mingil juhul jagada neid kellegagi. Need on sõna otseses mõttes kogu teile saadetud teabe võti.**  
+
+# SSH-võtmete kasutamine GitHub'iga
+Alates 13. augustist 2021 ei aktsepteeri Github enam käsurealt juurdepääsuks parooliga autentimist. See tähendab, et nüüd peab autentima isikliku juurdepääsuloa kaudu või kasutama SSH-võtit (natuke mugavam).
+
+Siin on see, mis juhtub, kui proovite terminalis HTTP kaudu GitHub'i parooliga autentida:
+```
+Username for 'https://github.com': yourusername
+Password for 'https://yourusername@github.com':
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/yourusername/repository.git/'
+```
+GitHub vajab avalikku võtit, et anda teile luba mis tahes hoidlaid SSH kaudu redigeerida.
+
+### Kuidas SSH-võtmeid kohapeal genereerida
+Enne alustamist peaks teil juba olema GitHubi konto ja teie süsteemi installitud Git'iga terminal/käsuviip. Kui kasutate Windowsi, veenduge, et oleksite installinud Git Bash'i (https://appuals.com/what-is-git-bash/), millel on koos selle õpetusega sisseehitatud kõik tööriistad, mida peate järgima.
+
+OpenSSH klient on kõige populaarsem avatud lähtekoodiga tarkvara, mida kasutatakse SSH kaudu ühenduse loomiseks. Te ei pea oma operatsioonisüsteemi pärast muretsema, kuna see on vaikimisi installitud operatsioonisüsteemidesse Linux, macOS ja Windows 10.
+
+Kohalike SSH-võtmete loomiseks peate käivitama Windowsis käsuviiba või Unixi-põhiste süsteemide terminali. Tavaliselt saate seda teha, otsides oma rakenduste paneelil sõna „terminal”, „cmd” või „powershell”, seejärel klõpsates kuvataval ikoonil.
+
+Kohaliku SSH-võtmepaari loomiseks käivitage järgmine käsk:  
+`ssh-keygen -t ed25519 -C "alvin.kask@tptlive.ee"`
+
+- **ssh-keygen**: käsurea tööriist, mida kasutatakse uue SSH-võtmete paari loomiseks. Selle manuali näete *ssh-keygeni help*.
+- **-t ed25519**: -t kasutatakse võtmepaari digitaalallkirja loomiseks kasutatud algoritmi tähistamiseks. Kui teie süsteem seda toetab, on ed25519 parim algoritm, mida saate SSH-võtmepaaride loomiseks kasutada.
+- **-C "email"**: -c kasutatakse kohandatud kommentaari andmiseks avaliku võtme lõpus, mis tavaliselt on võtmepaari looja meiliaadress või tunnus.
+
+Kui olete käsu terminali sisestanud, peate sisestama faili, kuhu soovite võtmed salvestada. Vaikimisi asub see teie kodukataloogis peidetud kaustas nimega ".ssh", kuid saate selle muuta, mis teile meeldib.
+
+Seejärel küsitakse teilt võtmepaari lisamiseks parooli. See lisab täiendava turvakihi, kui teie seade on igal ajal ohus. Parooli lisamine ei ole kohustuslik, kuid see on alati soovitatav.
+
+See käsk genereerib teie valitud kataloogis (tavaliselt ~/.ssh) kaks faili: avaliku võtme laiendiga .pub ja privaatse ilma laiendita.
+
+### Lisage SSH-võti SSH-agendile (SSH Key to SSH-agent)
+
+SSH-agendi programm töötab taustal, hoiab teie privaatvõtmeid ja paroole turvaliselt ning hoiab neid ssh-i kasutamiseks valmis. See on suurepärane programm, mis säästab teid parooli sisestamisest iga kord, kui soovite serveriga ühenduse luua.
+
+Seetõttu lisage sellele agendile oma uus privaatvõti. Selleks tehke järgmist:
+
+- Veenduge, et SSH-agent töötaks taustal.
+```
+eval `ssh-agent`
+# Agent pid 334065
+```
+Saate sarnase teate, kui kõik on korras. See tähendab, et SSH-agent töötab konkreetse protsessi ID (PID) all.
+
+- Lisage oma SSH privaatvõti (ilma laiendita) ssh-agendile.
+```
+ssh-add ~/.ssh/id_ed25519
+# Tulemuseks võti, mis tuleb kleepida hiljem võtmealasse.
+```
+### Lisage SSH-võti GitHub'i kontole
+
+- Kopeerige oma SSH avalik võti lõikelauale. Saate avada faili, kus see asub, tekstiredaktoriga ja kopeerida või kasutada terminali selle sisu kuvamiseks.
+```
+cat ~/.ssh/id_ed25519.pub
+```
+- Logige GitHub'i ja minge lehe paremasse ülaossa, klõpsake oma profiilifotol ja valige **Seaded**.
+- Seejärel klõpsake profiili seadetes nuppu **SSH ja GPG Keys**.
+- Klõpsake nuppu **New SSH key**.
+- Andke oma uuele GitHub'i SSH-võtmele **pealkiri** – tavaliselt seade, millelt seda võtit kasutate. Seejärel kleepige võti **võtmealasse**.
+- **Add SSH key**
+
+On aeg testida. Ühenduse õige seadistamise tagamiseks kasutame SSH-d, et muuta, siduda ja liigutada ühte oma olemasolevatest hoidlatest.
+
+Esiteks peame hoidla oma kohalikku masinasse kloonima. Võime minna GitHub'i repositories lehele ja kopeerida selle pakutava SSH-aadressi vajutades nupul **Code** ja seejärel **SSH**.
+![SSH_01](https://user-images.githubusercontent.com/115221752/198824481-d315503b-0976-496e-bcf8-e4005167dbbd.JPG)
+
+Seejärel kloonige hoidla terminali abil:
+```
+git clone https://github.com/AlvinKask/SSH-key-kontroll.git
+
+```
+Hoidla laetakse kasutaja desktopile.
+
+Ja lükake need GitHub'i:
+```
+git clone https://github.com/AlvinKask/SSH-key-kontroll.git
+
+```
+git push
+
+```
 #
+#
+# Networking for Web Developers
 # FROM PING TO HTTP  
 **ping -c3 8.8.8.8 - käsklus saadab vastavale netilehele 3 testsõnumit, lõpetab ning kuvab vastused.**  
 - Meil on olemas internet.  
