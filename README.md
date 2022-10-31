@@ -90,7 +90,7 @@ Seejärel kloonige hoidla terminali abil:
 ```
 git clone https://github.com/AlvinKask/SSH-key-kontroll.git
 ```
-Hoidla laetakse kasutaja desktopile.
+Hoidla laetakse C:\Users\XXX\SSH-key-kontroll.
 
 Ja lükake need GitHub'i:
 ```
