@@ -89,8 +89,6 @@ Seejärel kloonige hoidla terminali abil:
 git clone https://github.com/AlvinKask/SSH-key-kontroll.git
 ```
 Hoidla laetakse C:\Users\XXX\SSH-key-kontroll.
-
-```
 #
 #
 # Networking for Web Developers
