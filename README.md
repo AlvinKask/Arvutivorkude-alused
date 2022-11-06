@@ -81,9 +81,7 @@ cat ~/.ssh/id_ed25519.pub
 - Andke oma uuele GitHub'i SSH-võtmele **pealkiri** – tavaliselt seade, millelt seda võtit kasutate. Seejärel kleepige võti **võtmealasse**.
 - **Add SSH key**
 
-On aeg testida. Ühenduse õige seadistamise tagamiseks kasutame SSH-d, et muuta, siduda ja liigutada ühte oma olemasolevatest hoidlatest.
-
-Esiteks peame hoidla oma kohalikku masinasse kloonima. Võime minna GitHub'i repositories lehele ja kopeerida selle pakutava SSH-aadressi vajutades nupul **Code** ja seejärel **SSH**.
+Hoidla kohalikku masinasse kloonimiseks võime minna GitHub'i repositories lehele ja kopeerida selle pakutava SSH-aadressi vajutades nupul **Code** ja seejärel **SSH**.
 ![SSH_01](https://user-images.githubusercontent.com/115221752/198824481-d315503b-0976-496e-bcf8-e4005167dbbd.JPG)
 
 Seejärel kloonige hoidla terminali abil:
@@ -92,9 +90,6 @@ git clone https://github.com/AlvinKask/SSH-key-kontroll.git
 ```
 Hoidla laetakse C:\Users\XXX\SSH-key-kontroll.
 
-Ja lükake need GitHub'i:
-```
-git push
 ```
 #
 #
