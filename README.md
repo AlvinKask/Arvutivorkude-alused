@@ -254,10 +254,10 @@ Ja kogu oranž alumine rida (alates 240-st) eraldati algselt "edaspidiseks kasut
 
 - tcpdump - käsklus, mis võimaldab vaadata ükskõik millist võrguliiklust    
 
-'sudo tcpdump -n host 8.8.8.8' käsklus hosti ja 8.8.8.8 vahelise ühenduse liikluse "püüdmiseks"  
+`sudo tcpdump -n host 8.8.8.8` käsklus hosti ja 8.8.8.8 vahelise ühenduse liikluse "püüdmiseks"  
 
 - Andmed pärinevad pakettide päisetest  
-'19:51:58.304117 IP 10.20.27.153.59328 > 93.184.216.34.80: Flags [S], seq 2574797435, win 26883, options [mss 8961,sackOK,TS val 689168793 ecr 0,nop,wscale 7], length 0'
+`19:51:58.304117 IP 10.20.27.153.59328 > 93.184.216.34.80: Flags [S], seq 2574797435, win 26883, options [mss 8961,sackOK,TS val 689168793 ecr 0,nop,wscale 7], length 0`
 	- Sisaldab: sinu masina IP aadress -> ühendust võetava masina IP aadress -> length (kui palju andmeid saadeti) -> flag (allolev nimekiri kirjeldab tegevust)  
 		- SYN (sünkroonimine) [S] – see pakett avab uue TCP-seansi ja sisaldab uut esialgset järjenumbrit.  
 		- FIN (lõpeta) [F] – seda paketti kasutatakse TCP-seansi tavapäraseks sulgemiseks. Saatja ütleb, et nad on saatmise lõpetanud, kuid saavad siiski andmeid teisest lõpp-punktist vastu võtta.  
