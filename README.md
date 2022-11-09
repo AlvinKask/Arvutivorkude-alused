@@ -244,12 +244,72 @@ Ja kogu oranž alumine rida (alates 240-st) eraldati algselt "edaspidiseks kasut
 **http://test-ipv6.com/**
 #
 #
-# Teema 4
-The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
+# Protocol Layers
+
+- TCP session - kaks programmi saadavad andmeid edasi ja tagasi üle võrgu  
+
+- Võrguprotokollide hierarhia: riistvara -> IP -> TCP -> HTTP  
+![web_layers_4](https://user-images.githubusercontent.com/115221752/200791051-632bfacb-8e2c-450e-922f-f8be1f488d96.JPG)
+![web_layers_3](https://user-images.githubusercontent.com/115221752/200791080-e6bdd229-7009-41c4-b73c-3f1184b109e3.JPG)
+
+- tcpdump - käsklus, mis võimaldab vaadata ükskõik millist võrguliiklust    
+
+'sudo tcpdump -n host 8.8.8.8' käsklus hosti ja 8.8.8.8 vahelise ühenduse liikluse "püüdmiseks"  
+
+- Andmed pärinevad pakettide päisetest  
+'19:51:58.304117 IP 10.20.27.153.59328 > 93.184.216.34.80: Flags [S], seq 2574797435, win 26883, options [mss 8961,sackOK,TS val 689168793 ecr 0,nop,wscale 7], length 0'
+	- Sisaldab: sinu masina IP aadress -> ühendust võetava masina IP aadress -> length (kui palju andmeid saadeti) -> flag (allolev nimekiri kirjeldab tegevust)  
+		- SYN (sünkroonimine) [S] – see pakett avab uue TCP-seansi ja sisaldab uut esialgset järjenumbrit.  
+		- FIN (lõpeta) [F] – seda paketti kasutatakse TCP-seansi tavapäraseks sulgemiseks. Saatja ütleb, et nad on saatmise lõpetanud, kuid saavad siiski andmeid teisest lõpp-punktist vastu võtta.  
+		- PSH (push) [P] – see pakett on rakenduse andmete, näiteks HTTP-päringu, lõpp.  
+		- RST (reset) [R] — see pakett on TCP veateade; saatjal on probleem ja ta soovib seansi lähtestada (loobuda).  
+		- ACK (kinnitus) [.] – see pakett kinnitab, et selle saatja on saanud andmeid teisest lõpp-punktist. Peaaegu igal paketil, välja arvatud esimene SYN, on ACK lipp.  
+		- URG (kiireloomuline) [U] – see pakett sisaldab andmeid, mis tuleb rakendusele tarnida korrast ära. Ei kasutata HTTP-s ega enamikus teistes praegustes rakendustes.  
+
+- Masinate vahel toimub edasi tagasi andmevahetus. Ükski asi pole kohene vaid iga samm võtab aega.  
+![web_layers_2](https://user-images.githubusercontent.com/115221752/200791230-a4dadfd1-ed2f-4795-8e21-a971282d283b.JPG)
+![web_layers_1](https://user-images.githubusercontent.com/115221752/200791244-94c711f2-0853-4b5d-acdb-45bdc2ae952b.JPG)
+
+- Operatsioonisüsteem (mitte browser) hoiab mälus kohta, et paketid seada õigesse järjekorda ja veenduda, et saadud andmed oleks järjestikkused (mitte segamini).  
+
+- Paketid lähevad kaotsi/segamini kui saata palju andmeid üle võrgu ning mingi võrguosa ei ole võimeline edastama infot piidavalt kiiresti... tekib ummistus (saame timeout'i).  
+
+- TCP timeout tekib:
+	- vastaspoole host lülitub ootamatult välja  
+	- interneti kadumine  
+	- ühendudes serverisse mida pole olemas  
 #
 #
-# Teema 5
-The Alcázar of Segovia is a medieval castle located in the city of Segovia in Castile and León, Spain. Rising out on a rocky crag above the confluence of two rivers near the mountains of Guadarrama, it is one of the most distinctive castle-palaces in Spain by virtue of its shape, resembling the bow of a ship. The alcázar was originally built in the 11th or 12th century by the Almoravid dynasty as a fortress, but has since served as a royal palace where twenty-two kings reigned, a state prison, a royal artillery college, and a military academy. The castle overlooks a valley with the Eresma River and is a symbol of the old city of Segovia. It was declared a UNESCO World Heritage Site in 1985. Today, the alcázar is used as a museum and a military archives building since its declaration as a national archive by royal decree in 1998.
+# Big Networks
+
+- Hop - iga "hüpe" ühest masinast teise, et liigutada andmeid alguspunktist lõpp-punkti  
+
+- traceroute / mtr - käsklused, mis näitavad kõiki "hüppeid"  
+
+- roundtriptime - aeg, mis kulub paketi saatmisele sihtkohta ja sealt tagasijõudmisele  
+
+- TTL time to live
+	- väheneb iga "hüppega" ühe võrra kuni ta jõuab sihtpunkti  
+	- kui võrgus on probleem (näiteks ruuteriga), siis tekib ringiliikumine (loop) ja TTL jookseb nulli  
+		- viimane ruuter, mis kontakteerub nulli jooksnud paketiga saadab alguspunkti tagasi veateate ja ruuteri aadressi, mis nägi paketti "suremas"  
+	- treceroute saadab paketid välja järjest suureneva TTL'iga, et saada iga "hüppe" kohta veateade kuni lõppsihtkohani välja  
+
+- high latency - kui peale klikkimist võtavad "hüpped" aega (sest neid on palju) ja vajutused ei tundu kohesed  
+
+- low bandwidth - kui veebilehe laadimine võtab aeglase ühenduse (iganenud eadmete) tõttu kaua aega  
+
+- Bandwidth- Delay Product - kui palju bitte on "kaablis" andmeid ühenduse hetkel  
+![web_layers_5](https://user-images.githubusercontent.com/115221752/200791330-54c5880d-e97b-4001-aa1b-9d6d40f1f387.JPG)
+
+Tulemüürid (firewall) - seadmed, mida võrguoperaatorid saavad kasutada võrku siseneva või sealt väljuva liikluse filtreerimiseks. Tulemüür on üks näide võrguseadmete klassist, mida nimetatakse keskkastideks – seadmed, mis kontrollivad, muudavad või filtreerivad võrguliiklust.  
+
+Teised keskkastide (middlebox) näited hõlmavad sissetungituvastussüsteeme ja koormuse tasakaalustajaid. Tehniliselt on see keskkast ainult siis, kui see on kliendist või serverist eraldiseisev seade – serveripoolsed "tulemüürid", nagu Linuxi iptables, ei ole keskkastid.  
+
+- Mõned kliendid ei saa ligi su veebilehele, siis mida peaks lähemalt uurima:  
+	- kas kasutajad saavad ping'ida minu IP aadressi  
+	- kas kasutajad saavad ligi teisele lehele samas serveris  
+	- kas kasutaja saab veebilehte uurida kasutades käsklusi host või dig  
+	- kas kasutajad, kellel on probleemid, paiknevad samas riigis
 #
 #
 #
