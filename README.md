@@ -443,3 +443,10 @@ Näitab liidese IP aadressi
 DHCP Server - annab meile võrgukonfiguratsiooni
 DNS resolver  - otsib hosts?
               - võttis vastu soovi minna lehele www.err.ee, võtab serveriga ühendust ning seejärel suunab meid aadressile 141.101.90.16
+
+# NAT tööpõhimõte
+![NAT](https://user-images.githubusercontent.com/115221752/202453433-bb6289aa-1a88-4e5e-b84d-aacf12e42948.PNG)
+
+NAT plussid/miinused
+	- IP aadresside korduvkasutus
+	- enda masina IP ei paista valikus võrgus välja
