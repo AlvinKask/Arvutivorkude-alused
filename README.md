@@ -402,7 +402,32 @@ https://tparnpuu.webhosting.tptlive.ee/h5p/wp-admin/admin-ajax.php?action=h5p_em
 Wireshark
 https://www.wireshark.org/
 
-TCPDUMP
+Näitab liidese IP aadressi
+- IPv4 Address. . . . . . . . . . . : 192.168.0.33        Esimesed 3 jaotust sümboliseerivad minu koduaadressi; viimane osa sümboliseerib kindlat arvutit
+- Subnet Mask . . . . . . . . . . . : 255.255.255.0       
+- Default Gateway . . . . . . . . . : 192.168.0.1         Väljapääs teistesse võrkudesse ja internetti
+- DNS Servers . . . . . . . . . . . : 192.168.0.1         Osutab meile IP ja nimede teisendamise teenust
+- MAC . . . . . . . . . . . . . . . : 04:0E:3C:C3:1C:5A   
+- Physical Address. . . . . . . . . : 04-0E-3C-C3-1C-5A   16-süsteemis
+
+DHCP Server - annab meile võrgukonfiguratsiooni
+DNS resolver  - otsib hosts?
+              - võttis vastu soovi minna lehele www.err.ee, võtab serveriga ühendust ning seejärel suunab meid aadressile 141.101.90.16
+
+# NAT tööpõhimõte
+![NAT](https://user-images.githubusercontent.com/115221752/202453433-bb6289aa-1a88-4e5e-b84d-aacf12e42948.PNG)
+
+- NAT plussid
+	- IP aadresside korduvkasutus
+	- enda masina IP ei paista valikus võrgus välja
+	- lihtsam, kui IPv6
+- NAT miinused
+	- kulutab võrgu- ja protsessoriressurssi
+	- IP või võrkude kattuvused (VPN'i loomised)
+	- mõned protokollid ei saa NAT'iga hästi hakkama (ipsec, L2TP, Aktiivne FTP helper rakendused) - pigem kliendi VPN on SSL VPN tüüpi
+	- hämaraid tegusi lihtsam teha
+
+
 #
 #
 #
@@ -429,24 +454,3 @@ rida 3
 ```
 
 https://www.markdownguide.org/basic-syntax
-
-Teha 1-5 teemade jaotus, oma jutt, mõtted ja kommentaarid
-
-Näitab liidese IP aadressi
-- IPv4 Address. . . . . . . . . . . : 192.168.0.33        Esimesed 3 jaotust sümboliseerivad minu koduaadressi; viimane osa sümboliseerib kindlat arvutit
-- Subnet Mask . . . . . . . . . . . : 255.255.255.0       
-- Default Gateway . . . . . . . . . : 192.168.0.1         Väljapääs teistesse võrkudesse ja internetti
-- DNS Servers . . . . . . . . . . . : 192.168.0.1         Osutab meile IP ja nimede teisendamise teenust
-- MAC . . . . . . . . . . . . . . . : 04:0E:3C:C3:1C:5A   
-- Physical Address. . . . . . . . . : 04-0E-3C-C3-1C-5A   16-süsteemis
-
-DHCP Server - annab meile võrgukonfiguratsiooni
-DNS resolver  - otsib hosts?
-              - võttis vastu soovi minna lehele www.err.ee, võtab serveriga ühendust ning seejärel suunab meid aadressile 141.101.90.16
-
-# NAT tööpõhimõte
-![NAT](https://user-images.githubusercontent.com/115221752/202453433-bb6289aa-1a88-4e5e-b84d-aacf12e42948.PNG)
-
-- NAT plussid/miinused
-	- IP aadresside korduvkasutus
-	- enda masina IP ei paista valikus võrgus välja
