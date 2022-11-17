@@ -447,6 +447,6 @@ DNS resolver  - otsib hosts?
 # NAT tööpõhimõte
 ![NAT](https://user-images.githubusercontent.com/115221752/202453433-bb6289aa-1a88-4e5e-b84d-aacf12e42948.PNG)
 
-NAT plussid/miinused
+- NAT plussid/miinused
 	- IP aadresside korduvkasutus
 	- enda masina IP ei paista valikus võrgus välja
